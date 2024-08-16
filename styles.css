@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #f7f7f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #666666; /* Set to grey */
+    padding-left: 20px;
+}
+
+#glance-container {
+    width: 60%;
+    max-width: 800px;
+    background-color: #ffffff;
+    margin: 60px auto 0 auto; /* Leave space for the header */
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px); /* Adjust height */
+    overflow-y: auto; /* Enable scrolling under the header */
+}
+
+#examples-bar {
+    background-color: #f0f4f8;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#task-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: center; /* Align icons and tasks on the same line */
+}
+
+.task-icon {
+    width: 20px; /* Smaller icons */
+    height: 20px; /* Smaller icons */
+    filter: grayscale(50%); /* Make icons slightly grey */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.task-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.task-group h3 {
+    font-size: 12px;
+    text-align: center;
+    color: #666666; /* Make text grey */
+}
+
+#button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-group-buttons {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.task-group-buttons button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 8px;
+    font-size: 10px; /* Smaller font size */
+    border: 1px solid #666666; /* Border and text color set to grey */
+    border-radius: 5px;
+    background-color: transparent; /* No fill */
+    color: #666666; /* Text color set to grey */
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Noto Sans', sans-serif;
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Adds ... for overflow */
+}
+
+.task-group-buttons button:hover {
+    background-color: rgba(102, 102, 102, 0.1); /* Slight hover effect */
+}
+
+#chat-interface {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#conversation {
+    margin-bottom: 10px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background-color: #dfe7fd;
+    align-self: flex-start;
+}
+
+.llm-message {
+    background-color: #f0f0f0;
+    align-self: flex-end;
+}
+
+#visualization {
+    background-color: #f0f4f8;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #cccccc; /* Light grey divider */
+    margin: 5px 0;
+}

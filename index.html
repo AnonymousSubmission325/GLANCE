@@ -1,1 +1,64 @@
-is it you, glance?
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLANCE Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header">
+        <h1>GLANCE</h1>
+    </div>
+    <div id="glance-container">
+        <div id="examples-bar">
+            <div id="task-icons">
+                <div class="task-group">
+                    <img src="alert-circle.svg" alt="Explanation" class="task-icon" />
+                    <h3>Explanation</h3>
+                </div>
+                <div class="task-group">
+                    <img src="plus-circle.svg" alt="Generation" class="task-icon" />
+                    <h3>Generation</h3>
+                </div>
+                <div class="task-group">
+                    <img src="arrow-up-circle.svg" alt="Improvement" class="task-icon" />
+                    <h3>Improvement</h3>
+                </div>
+                <div class="task-group">
+                    <img src="minus-circle.svg" alt="Summarization" class="task-icon" />
+                    <h3>Summarization</h3>
+                </div>
+            </div>
+            <hr class="divider">
+            <div id="button-container">
+                <div class="task-group-buttons" id="Explanation">
+                    <!-- Buttons will be populated dynamically -->
+                </div>
+                <hr class="divider">
+                <div class="task-group-buttons" id="Generation">
+                    <!-- Buttons will be populated dynamically -->
+                </div>
+                <hr class="divider">
+                <div class="task-group-buttons" id="Improvement">
+                    <!-- Buttons will be populated dynamically -->
+                </div>
+                <hr class="divider">
+                <div class="task-group-buttons" id="Summarization">
+                    <!-- Buttons will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div id="chat-interface">
+            <div id="conversation">
+                <!-- Conversation will be displayed here -->
+            </div>
+            <div id="visualization">
+                <!-- Visualization will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
