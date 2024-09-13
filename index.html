@@ -3,53 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLANCE Prototype</title>
+    <title>GLANCE</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script> <!-- Importing main script -->
 </head>
 <body>
     <div id="header">
-        <h1>GLANCE</h1>
-    </div>
-    <div id="glance-container">
-        <div id="examples-bar">
-            <div id="task-icons">
-                <div class="task-group">
-                    <img src="alert-circle.svg" alt="Explanation" class="task-icon" />
-                    <h3>Explanation</h3>
-                </div>
-                <div class="task-group">
-                    <img src="plus-circle.svg" alt="Generation" class="task-icon" />
-                    <h3>Generation</h3>
-                </div>
-                <div class="task-group">
-                    <img src="arrow-up-circle.svg" alt="Improvement" class="task-icon" />
-                    <h3>Improvement</h3>
-                </div>
-                <div class="task-group">
-                    <img src="minus-circle.svg" alt="Summarization" class="task-icon" />
-                    <h3>Summarization</h3>
-                </div>
-            </div>
-            <hr class="divider">
-            <div id="button-container">
-                <div class="task-group-buttons" id="Explanation">
-                    <!-- Buttons will be populated dynamically -->
-                </div>
-                <hr class="divider">
-                <div class="task-group-buttons" id="Generation">
-                    <!-- Buttons will be populated dynamically -->
-                </div>
-                <hr class="divider">
-                <div class="task-group-buttons" id="Improvement">
-                    <!-- Buttons will be populated dynamically -->
-                </div>
-                <hr class="divider">
-                <div class="task-group-buttons" id="Summarization">
-                    <!-- Buttons will be populated dynamically -->
-                </div>
-            </div>
+        <div id="title-container">
+            <h1>GLANCE</h1>
+            <h2>Submission to CHI25</h2>
         </div>
-
+    </div>
+    <div id="content-container">
+        <!-- Sidebar for tasks and controls -->
+        <div id="sidebar">
+            <p>
+                This tool helps by visually enhancing LLM conversations for an easier interpretation.<br>
+                Use the chat function as usual. If your input can be categorized as one of the following tasks, visual highlighting is applied.<br>
+                Click the following examples to check it out!
+            </p>
+            <div id="tasks">
+                <div id="Explanation">
+                    <img src="alert-circle.svg" alt="Explanation Icon">
+                    <span>Explanation</span>
+                    <!-- Buttons will be populated by script -->
+                </div>
+                <div id="Generation">
+                    <img src="plus-circle.svg" alt="Generation Icon">
+                    <span>Generation</span>
+                    <!-- Buttons will be populated by script -->
+                </div>
+                <div id="Improvement">
+                    <img src="arrow-up-circle.svg" alt="Improvement Icon">
+                    <span>Improvement</span>
+                    <!-- Buttons will be populated by script -->
+                </div>
+                <div id="Summarization">
+                    <img src="minus-circle.svg" alt="Summarization Icon">
+                    <span>Summarization</span>
+                    <!-- Buttons will be populated by script -->
+                </div>
+            </div>
+            <!-- <div id="accuracy-control">
+                <label for="accuracy-slider">Keyword Marking Accuracy</label>
+                <input type="range" id="accuracy-slider" name="accuracy-slider" min="0" max="200" step="30" value="100">
+                <div id="accuracy-legend">
+                    <span>0</span>
+                    <span>30</span>
+                    <span>60</span>
+                    <span>90</span>
+                    <span>120</span>
+                    <span>150</span>
+                    <span>180</span>
+                </div>
+            </div> -->
+        </div>
+        <!-- Main chat interface -->
         <div id="chat-interface">
             <div id="conversation">
                 <!-- Conversation will be displayed here -->
@@ -57,8 +66,11 @@
             <div id="visualization">
                 <!-- Visualization will be displayed here -->
             </div>
+            <div id="input-container">
+                <input type="text" id="user-input" placeholder="Type your message here...">
+                <img src="play-circle.svg" alt="Send" id="send-button" />
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
