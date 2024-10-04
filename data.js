@@ -12,7 +12,7 @@ export const jsonData = [
 
 
             // Beauty related markings (Pink)
-                {  "word": "its beauty", "color": "rgba(220, 20, 60, 0.4)", "importance": 100 },
+                { "word": "its beauty", "color": "rgba(220, 20, 60, 0.4)", "importance": 100 },
                 { "word": "shimmered in the early morning light", "color": "rgba(220, 20, 60, 0.4)", "importance": 40 },
                 { "word": "sunlight filtered through the clouds", "color": "rgba(220, 20, 60, 0.4)", "importance": 40 },
                 { "word": "casting golden rays", "color": "rgba(220, 20, 60, 0.4)", "importance": 70 },
@@ -122,7 +122,7 @@ export const jsonData = [
         "markings": [
             {
                 "input": ["Adapting agriculture to climate change", "requires a multi-dimensional approach", "integrating technical, economic, and policy-driven strategies."],
-                "output": ["Climate change adaptation in agriculture", "involves using drought-resistant crops", "sustainable farming practices", "and efficient irrigation"],
+                "output": ["Climate change adaptation in agriculture", "involves using drought-resistant crops", "sustainable farming practices"],
                 "color": "rgba(255, 183, 77, 0.4)" // Orange shade for climate change adaptation
             },
             {
@@ -182,38 +182,7 @@ export const jsonData = [
                 "content": "Climate change adaptation in agriculture involves using drought-resistant crops, sustainable farming practices, and efficient irrigation. Policy measures, like subsidies and resource management, support this transition."
             }
         ]
-    },
-    {
-        "task": "Summarization",
-        "prompt": "Summarize key findings from a market research report on consumer trends in the electronics industry.",
-        "markings": [
-            {
-                "input": ["market research report", "consumer trends", "electronics industry"],
-                "output": ["market research", "consumer trends", "electronics industry"],
-                "color": "rgba(255, 205, 86, 0.5)" // Yellow for key terms
-            },
-            {
-                "input": ["purchasing behaviors", "market growth projections", "shifts in consumer preferences"],
-                "output": ["purchasing behaviors", "market growth projections", "consumer preferences"],
-                "color": "rgba(54, 162, 235, 0.5)" // Blue for main report findings
-            },
-            {
-                "input": ["data on projected sales", "relevant insights", "presentation"],
-                "output": ["projected sales", "relevant insights"],
-                "color": "rgba(75, 192, 192, 0.5)" // Green for conclusions and insights
-            }
-        ],
-        "conversation": [
-            {
-                "role": "user",
-                "content": "Summarize key findings from a market research report on consumer trends in the electronics industry. Focus on purchasing behaviors and market growth projections."
-            },
-            {
-                "role": "llm",
-                "content": "The market research report highlights significant trends in consumer preferences within the electronics industry. Key findings include shifts in purchasing behaviors, with a growing preference for eco-friendly products, and notable market growth projections for the next five years. Data on projected sales shows a consistent upward trend, providing relevant insights for understanding future market dynamics."
-            }
-        ]
-    },   
+    },  
     {
         "task": "Improvement",
         "prompt": "Improve the following letter by making it more formal and concise.",

@@ -5,90 +5,90 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
+    align-items: center;
     height: 100vh;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden;
+    font-size: 1.2rem; /* Adjust the base font size */
 }
 
 #header {
     width: 100%;
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     background-color: #f0f4f8;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Left align text */
+    text-align: left;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     position: relative;
 }
 
 #title-container {
     display: inline-block;
     text-align: left;
-    margin-left: auto; /* Move container to the right */
-    padding-right: 20px; /* Additional padding to shift title */
+    margin-right: 40%; /* Increase the margin-left to shift it further right */
+    padding-right: 20px;
 }
 
 #header h1 {
     color: #666666;
     margin: 0;
-    font-size: 24px;
+    font-size: 2rem; /* Increase title font size */
 }
 
 #header h2 {
     color: #999999;
     margin: 0;
-    font-size: 10px;
-    margin-top: 4px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
 
 #content-container {
     display: flex;
     flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center; /* Center content horizontally */
+    width: 50%;
+    /* max-width: 1200px; */
+    justify-content: center;
     box-sizing: border-box;
-    height: calc(100vh - 70px); /* Adjust height based on header size */
+    height: calc(100vh - 70px);
 }
 
 #sidebar {
     width: 25%;
     background-color: #f0f4f8;
-    padding: 20px;
+    padding: 2rem;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size: 1.1rem; /* Increase sidebar text size */
 }
 
 #sidebar p {
-    font-size: 12px;
+    font-size: 1rem;
     color: #666666;
 }
 
 #tasks {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 #tasks div {
-    margin-bottom: 20px;
-    position: relative; /* Allow relative positioning */
-    padding-top: 10px;  /* Add space above the icons to lower them */
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 #tasks img {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
     color: #666666;
-    position: relative; /* Allow adjustment */
-    top: 4px; /* Lower the icon by 10px, adjust as needed */
+    position: relative;
+    top: 4px;
 }
 
 #tasks span {
-    font-size: 14px;
+    font-size: 1.2rem; /* Adjust task label font size */
     color: #666666;
-    margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -97,43 +97,19 @@ body {
     background-color: transparent;
     border: 1px solid #666666;
     color: #666666;
-    padding: 5px;
-    font-size: 12px;
+    padding: 0.75rem;
+    font-size: 1rem;
     border-radius: 5px;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
-    margin-top: 5px;
-    display: block;
+    margin-top: 0.5rem;
 }
 
 #tasks button:hover {
     background-color: #e0e0e0;
-}
-
-#accuracy-control {
-    margin-top: 20px;
-    font-size: 10px;
-    color: #666666;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#accuracy-slider {
-    width: 100%;
-    margin-top: 5px;
-}
-
-#accuracy-legend {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 9px;
-    margin-top: 5px;
-    color: #999999;
 }
 
 #chat-interface {
@@ -142,9 +118,9 @@ body {
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 0 20px;
+    padding: 0 2rem;
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
     box-sizing: border-box;
     height: 100%;
 }
@@ -152,59 +128,44 @@ body {
 #conversation {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 10px;
+    padding: 1rem;
     background-color: #f9f9f9;
+    font-size: 1.2rem; /* Adjust conversation font size */
 }
 
 .message-container {
     display: flex;
-    align-items: center; /* Align icon and text vertically */
-    justify-content: flex-end; /* Align the message container to the right */
-    margin-bottom: 10px; /* Space between messages */
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 }
 
-/* The icon next to the message */
-.message-container img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-/* User message box styling */
 .user-message {
     background-color: #e6e6e6;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 5px;
-    max-width: 60%;
+    max-width: 70%;
     word-wrap: break-word;
     display: inline-block;
+    font-size: 1rem;
 }
 
-/* LLM message box styling */
 .llm-message {
     background-color: transparent;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 5px;
-    max-width: 60%;
+    max-width: 70%;
     word-wrap: break-word;
+    font-size: 1rem;
 }
-
-/* Align text properly */
-.message {
-    max-width: 80%; /* Increase from 60% to 80% */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
 
 #input-container {
     display: flex;
     align-items: center;
     background-color: #f0f4f8;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 #user-input {
@@ -212,8 +173,8 @@ body {
     border: none;
     background-color: #f0f4f8;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 1.2rem;
+    padding: 1rem;
     border-radius: 10px;
     color: #666666;
 }
@@ -223,9 +184,9 @@ body {
 }
 
 #send-button {
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
     cursor: pointer;
 }
 
@@ -233,6 +194,50 @@ body {
 #Generation span,
 #Improvement span,
 #Summarization span {
-    font-size: 1.1em; /* Adjust the value as needed for larger text */
-    font-weight: bold; /* Optional: make the text bold */
+    font-size: 1.3rem; /* Larger task labels */
+    font-weight: bold;
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 1024px) {
+    #content-container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #sidebar {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #chat-interface {
+        width: 100%;
+    }
+
+    #tasks span {
+        font-size: 1.1rem;
+    }
+
+    #tasks button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #header h1 {
+        font-size: 1.8rem;
+    }
+
+    #header h2 {
+        font-size: 0.9rem;
+    }
+
+    #sidebar {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    #chat-interface {
+        padding: 1rem;
+    }
 }
