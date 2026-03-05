@@ -11,37 +11,20 @@
     <div id="header">
         <div id="title-container">
             <h1>GLANCE</h1>
-            <h2>Submission to CHI25</h2>
+            <h2>EuroVA 2026</h2>
         </div>
     </div>
     <div id="content-container">
         <!-- Sidebar for tasks and controls -->
-        <div id="sidebar">
+            <div id="sidebar">
             <p>
-                This tool helps by visually enhancing LLM conversations for an easier interpretation.<br>
-                Use the chat function as usual. If your input can be categorized as one of the following tasks, visual highlighting is applied.<br>
-                Click the following examples to check it out!
+This tool augments LLM conversations through configurable mediation strategies that support structured interpretation. Use the chat interface as usual; when a strategy is activated or created, the response is visually mediated to augment your chat!
             </p>
+            <!-- API key is read from config.js for local development -->
             <div id="tasks">
-                <div id="Explanation">
-                    <img src="alert-circle.svg" alt="Explanation Icon">
-                    <span>Explanation</span>
-                    <!-- Buttons will be populated by script -->
-                </div>
-                <div id="Generation">
-                    <img src="plus-circle.svg" alt="Generation Icon">
-                    <span>Generation</span>
-                    <!-- Buttons will be populated by script -->
-                </div>
-                <div id="Improvement">
-                    <img src="arrow-up-circle.svg" alt="Improvement Icon">
-                    <span>Improvement</span>
-                    <!-- Buttons will be populated by script -->
-                </div>
-                <div id="Summarization">
-                    <img src="minus-circle.svg" alt="Summarization Icon">
-                    <span>Summarization</span>
-                    <!-- Buttons will be populated by script -->
+                <div id="tasks-placeholder"></div>
+                <div class="create-augmentation" id="create-augmentation-btn" data-title="Create Augmentation Strategy">
+                    <img src="plus-circle.svg" alt="Create Augmentation">
                 </div>
             </div>
             <!-- <div id="accuracy-control">
@@ -61,15 +44,62 @@
         <!-- Main chat interface -->
         <div id="chat-interface">
             <div id="conversation">
-                <!-- Conversation will be displayed here -->
+                <div id="messages">
+                    <!-- Conversation will be displayed here -->
+                </div>
+                <div id="input-container">
+                    <input type="text" id="user-input" placeholder="Type your message here...">
+                    <img src="play-circle.svg" alt="Send" id="send-button" />
+                </div>
             </div>
             <div id="visualization">
                 <!-- Visualization will be displayed here -->
             </div>
-            <div id="input-container">
-                <input type="text" id="user-input" placeholder="Type your message here...">
-                <img src="play-circle.svg" alt="Send" id="send-button" />
+        </div>
+    </div>
+
+    <!-- Augmentation modal (hidden by default) -->
+    <div id="augmentation-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" id="augmentation-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="puzzle.png" alt="puzzle" class="modal-icon">
+                <h3>Augmentation Strategy</h3>
             </div>
+            <button class="modal-close" id="augmentation-close" aria-label="Close">×</button>
+
+            <div class="input-mask light-blue">
+                <div class="mask-header">
+                    <div class="mask-icon darkblue">T</div>
+                    <div class="mask-title">Title</div>
+                </div>
+                <input type="text" id="strategy-title" placeholder="Enter strategy title..." />
+            </div>
+            <div class="input-mask light-blue">
+                <div class="mask-header">
+                    <div class="mask-icon darkblue">C</div>
+                    <div class="mask-title">Task Context</div>
+                </div>
+                <textarea id="task-context" placeholder="Describe the task context..."></textarea>
+            </div>
+
+            <div class="input-mask light-green">
+                <div class="mask-header">
+                    <div class="mask-icon darkgreen">E</div>
+                    <div class="mask-title">Evidence Derivation</div>
+                </div>
+                <textarea id="evidence-derivation" placeholder="Describe the evidence derivation..."></textarea>
+            </div>
+
+            <div class="input-mask light-orange">
+                <div class="mask-header">
+                    <div class="mask-icon darkorange">V</div>
+                    <div class="mask-title">Visual Encoding</div>
+                </div>
+                <textarea id="visual-encoding" placeholder="Describe the visual encoding..."></textarea>
+            </div>
+
+            <button id="submit-masks" class="primary">Submit</button>
         </div>
     </div>
 </body>
