@@ -1,6 +1,5 @@
 // Import the JSON data from the external data.js file
 import { jsonData } from './data.js';
-import { OPENAI_API_KEY } from './config.js';
 
 // Task Icons for each task archetype
 const taskIcons = {
@@ -44,41 +43,39 @@ function hideSpinner(spinnerEl) {
     if (spinnerEl && spinnerEl.parentNode) spinnerEl.parentNode.removeChild(spinnerEl);
 }
 
-// Helper to call OpenAI Chat Completions, prepending a system instruction
+// Helper to call the Vercel proxy instead of OpenAI directly
 async function callOpenAIChat(messages, opts = {}) {
-    const apiKey = (typeof OPENAI_API_KEY === 'string' && OPENAI_API_KEY.length > 0) ? OPENAI_API_KEY : (getStoredApiKey && getStoredApiKey());
-    if (!apiKey) throw new Error('No OpenAI API key available');
+    const apiBase = window.GLANCE_CONFIG?.API_BASE_URL;
+    if (!apiBase) throw new Error('No Vercel proxy URL configured in GLANCE_CONFIG');
 
     const systemMsg = { role: 'system', content: opts.system || DEFAULT_SYSTEM_INSTRUCTION };
     const allMessages = [systemMsg, ...messages];
 
+    // Convert messages array to a single prompt string for the proxy
+    const promptText = allMessages.map(msg => `[${msg.role}]: ${msg.content}`).join('\n\n');
+
     const body = {
+        prompt: promptText,
         model: opts.model || 'gpt-3.5-turbo',
-        messages: allMessages,
         temperature: opts.temperature ?? 0.7,
         max_tokens: opts.max_tokens ?? 800,
     };
 
-    const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+    const resp = await fetch(`${apiBase}/api/chat`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
     });
 
     if (!resp.ok) {
         const errText = await resp.text();
-        throw new Error(`OpenAI error ${resp.status}: ${errText}`);
+        throw new Error(`Proxy error ${resp.status}: ${errText}`);
     }
 
     const data = await resp.json();
-    return data?.choices?.[0]?.message?.content || '';
-}
-
-function getStoredApiKey() {
-    try { return localStorage.getItem('glance_api_key'); } catch (e) { return null; }
+    return data?.output || data?.choices?.[0]?.message?.content || '';
 }
 
 // returns the element where messages should be appended (new #messages preferred)
