@@ -44,30 +44,28 @@ function hideSpinner(spinnerEl) {
     if (spinnerEl && spinnerEl.parentNode) spinnerEl.parentNode.removeChild(spinnerEl);
 }
 
-// Helper to call the Vercel proxy instead of OpenAI directly
 async function callOpenAIChat(messages, opts = {}) {
-    const apiBase = OPENAI_API_KEY;
-    if (!apiBase) throw new Error('No Vercel proxy URL configured in GLANCE_CONFIG');
+    const apiBase = window.GLANCE_CONFIG?.API_BASE_URL;
+    if (!apiBase) throw new Error("No API_BASE_URL configured in GLANCE_CONFIG");
 
-    const systemMsg = { role: 'system', content: opts.system || DEFAULT_SYSTEM_INSTRUCTION };
-    const allMessages = [systemMsg, ...messages];
-
-    // Convert messages array to a single prompt string for the proxy
-    const promptText = allMessages.map(msg => `[${msg.role}]: ${msg.content}`).join('\n\n');
-
-    const body = {
-        prompt: promptText,
-        model: opts.model || 'gpt-3.5-turbo',
-        temperature: opts.temperature ?? 0.7,
-        max_tokens: opts.max_tokens ?? 800,
+    const systemMsg = {
+        role: "system",
+        content: opts.system || DEFAULT_SYSTEM_INSTRUCTION
     };
 
+    const allMessages = [systemMsg, ...messages];
+
     const resp = await fetch(`${apiBase}/api/chat`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify({
+            model: opts.model || "gpt-4.1-mini",
+            messages: allMessages,
+            temperature: opts.temperature ?? 0.7,
+            max_tokens: opts.max_tokens ?? 800
+        })
     });
 
     if (!resp.ok) {
@@ -76,7 +74,7 @@ async function callOpenAIChat(messages, opts = {}) {
     }
 
     const data = await resp.json();
-    return data?.output || data?.choices?.[0]?.message?.content || '';
+    return data?.choices?.[0]?.message?.content || "";
 }
 
 // returns the element where messages should be appended (new #messages preferred)
