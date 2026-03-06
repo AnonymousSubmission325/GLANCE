@@ -1,7 +1,6 @@
-// Vercel proxy configuration (no API key exposed)
-// Replace with your deployed Vercel project URL
-// e.g., https://your-project-name.vercel.app
+// Store your OpenAI API key here for local development.
+// WARNING: committing this file to version control will expose your key.
+// Replace the empty string with your key, e.g.:
+// export const OPENAI_API_KEY = 'sk-...';
 
-window.GLANCE_CONFIG = {
-  API_BASE_URL: "https://anonymous-submission325-github-io.vercel.app" 
-};
+export const OPENAI_API_KEY = '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';

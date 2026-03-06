@@ -1,5 +1,6 @@
 // Import the JSON data from the external data.js file
 import { jsonData } from './data.js';
+import { OPENAI_API_KEY } from './config.js';
 
 // Task Icons for each task archetype
 const taskIcons = {
@@ -45,7 +46,7 @@ function hideSpinner(spinnerEl) {
 
 // Helper to call the Vercel proxy instead of OpenAI directly
 async function callOpenAIChat(messages, opts = {}) {
-    const apiBase = window.GLANCE_CONFIG?.API_BASE_URL;
+    const apiBase = OPENAI_API_KEY;
     if (!apiBase) throw new Error('No Vercel proxy URL configured in GLANCE_CONFIG');
 
     const systemMsg = { role: 'system', content: opts.system || DEFAULT_SYSTEM_INSTRUCTION };
