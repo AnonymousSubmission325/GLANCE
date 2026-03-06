@@ -1,6 +1,5 @@
 // Import the JSON data from the external data.js file
 import { jsonData } from './data.js';
-import { OPENAI_API_KEY } from './config.js';
 
 // Task Icons for each task archetype
 const taskIcons = {
