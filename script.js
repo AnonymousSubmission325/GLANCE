@@ -44,7 +44,7 @@ function hideSpinner(spinnerEl) {
 }
 
 async function callOpenAIChat(messages, opts = {}) {
-    const apiBase = window.GLANCE_CONFIG?.OPENAI_API_KEY;
+    const apiBase = window.GLANCE_CONFIG?.API_BASE_URL;
     if (!apiBase) throw new Error("No API_BASE_URL configured in GLANCE_CONFIG");
 
     const systemMsg = {
