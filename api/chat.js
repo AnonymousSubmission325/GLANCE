@@ -1,13 +1,19 @@
 export default async function handler(req, res) {
+  const allowedOrigins = new Set([
+    "https://glance-rho-five.vercel.app",
+    "https://anonymoussubmission325.github.io"
+  ]);
 
-  const allowedOrigin = "https://glance-rho-five.vercel.app";
+  const origin = req.headers.origin;
+  if (allowedOrigins.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
 
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Max-Age", "86400");
 
-  // Handle CORS preflight FIRST
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
@@ -17,13 +23,11 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.OPENAI_API_KEY;
-
   if (!apiKey) {
     return res.status(500).json({ error: "OPENAI_API_KEY missing" });
   }
 
   try {
-
     const { messages, model, temperature, max_tokens } = req.body || {};
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -41,12 +45,8 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-
     return res.status(response.status).json(data);
-
   } catch (err) {
-
     return res.status(500).json({ error: String(err) });
-
   }
 }
